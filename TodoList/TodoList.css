@@ -1,0 +1,21 @@
+*{
+    background-color: aqua;
+    /* align-items: center; */
+
+}
+
+.outer-card{
+    border: 2px solid red;
+    width : 600px;
+    margin:auto;
+}
+
+.complete-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}

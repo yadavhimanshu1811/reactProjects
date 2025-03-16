@@ -5,5 +5,70 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #222;
+    background-color: grey;
+}
+.card{
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    margin: 20px auto 0;
+    border: 2px solid red ;
+    padding: 10px;
+}
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid green ;
+}
+
+.search input{
+    height: 60px;
+    flex: 1;
+    border-radius: 30px;
+    font-size: 28px;
+    padding: 0 10px;
+}
+
+.search button{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.search button img {
+    width: 16px;
+}
+
+.weather{
+    border: 2px solid blue;
+    /* text-align: center; */
+    padding: 10px ;
+}
+.weather img{
+    border: 2px solid red;
+}
+
+.details{
+    border: 2px solid green;
+    display: flex;
+}
+
+.col{
+    width: 60%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    border: 1px solid green;
+    margin: 20px auto;
+}
+
+.col img{
+    border: 1px solid blue;
+    height: 40px;
+}
+
+.col p{
+    font-size: 30px;
 }

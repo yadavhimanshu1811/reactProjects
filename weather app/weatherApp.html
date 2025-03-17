@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport", content ="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link href="styles.css", rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="Enter city name" spellcheck="false" id="input-box">
+                <button class="search-btn" onclick="searchWeather()"><img src="images/search.png"></button> 
+            </div>
+            <div class="weather">
+                <img src="images/rain.png" class="weather-icon">
+                <h1 class="temp">22 degree celcius</h1>
+                <h2 class="city">New Delhi</h2>
+                <div class="details">
+                    <div class="col">
+                        <img src="images/humidity.png">
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="images/wind.png">
+                        <div class="col-details">
+                            <p class="wind">15 kmph</p>
+                            <p>Wind speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+    const apiKey = "e2d19fa728072c4aaff58da69503e978";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
+    
+
+    function searchWeather (){
+        const inputBox = document.getElementById("input-box");
+        const locationName = inputBox.value
+        if(locationName == ''){
+            alert("City name can't be empty. Please enter correct city name. ");
+            return;
+        }
+        checkWeather(locationName);
+        inputBox.value = '';
+    }
+
+    async function checkWeather ( locationName){
+
+        try {
+            const response = await fetch(`${apiUrl}&appid=${apiKey}&q=${locationName}`);
+
+            // ✅ Check if response is NOT OK (e.g., invalid city or wrong API key)
+            // if (!response.ok) { ?????
+            //     throw new Error(`API error: ${response.status} - ${response.statusText}`);
+            // }
+            const data = await response.json();
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = data.main.temp+ '°C';
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " Km/hr";
+
+        } catch (error) {
+            console.error("❌ Failed to fetch weather data:", error.message);
+            alert("Invalid city name. Try again with correct name !");
+        }
+    }
+    checkWeather("New Delhi");
+    
+</script>
+    </body>
+</html>
